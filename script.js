@@ -547,6 +547,8 @@ window.addEventListener('load', function(){
     const game = new Game(canvas);
     game.init();
 
+    
+
     let lastTime = 0;
     function animate (timeStamp) {
         const deltaTime = timeStamp - lastTime;
@@ -554,5 +556,30 @@ window.addEventListener('load', function(){
         game.render(ctx, deltaTime);
         requestAnimationFrame(animate);
     }
-    animate(0);
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key == 's') animate(0);
+    })
+
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillRect(0, 0, game.width, game.height);
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.shadowOffsetX = 4;
+    ctx.shadowOffsetY = 4;
+    ctx.shadowColor = 'black';
+    let message1 = "BULL GAME";
+    let message2 = "In 30 seconds, using your mouse to move the bull in order to push egg or enemy.";
+    let message3 = "The egg will hatch to larva after a few seconds and you will gain 1 point for each larva that reach the forest."
+    let message4 = "Press S to start the game";
+    
+    ctx.font = '150px Bangers';
+    ctx.fillText(message1, game.width * 0.5, game.height * 0.5 - 20);
+    ctx.font = '30px Bangers';
+    ctx.fillText(message2, game.width * 0.5, game.height * 0.5 + 30, 1200);
+    ctx.fillText(message3, game.width * 0.5, game.height * 0.5 + 60, 1200);
+    ctx.font = '60px Bangers';
+    ctx.fillText(message4, game.width * 0.5, game.height * 0.5 + 140, 1200);
+    ctx.restore();
 })
