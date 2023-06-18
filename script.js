@@ -389,7 +389,7 @@ window.addEventListener('load', function(){
             this.maxEggs = 10;
             this.score = 0;
             this.lostHatchling = 0;
-            this.winningCondition = 5000;
+            this.winningCondition = 30000;
             this.mouse = {
                 x: this.width*0.5,
                 y: this.height*0.5,
